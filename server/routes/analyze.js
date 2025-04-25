@@ -25,7 +25,38 @@ router.post('/analyze', async (req, res) => {
                     inlineDataPart
             ],
             config: {
-                systemInstruction: "You are a resume reviewer. Analyze the following resume content in th   e file and suggest me improvement. Do not include any other information.",
+                systemInstruction:
+                    `You are an AI Resume Optimization Expert trained on top ATS systems like Greenhouse, Lever, and Workday. Analyze the following resume and suggest detailed improvements to increase its ATS score.
+
+Your analysis should include:
+
+### 1. Resume Summary:
+- Candidate profile: experience level, domain
+- Notable strengths
+
+### 2. ATS Score Factors (with suggestions):
+- ✅ **Keyword Optimization**: Are relevant job keywords present? Suggest missing ones.
+- ✅ **Section Completeness**: Does the resume include all critical sections (Summary, Skills, Experience, Education, Projects)?
+- ✅ **Formatting for ATS**: Check for issues like tables, columns, images, or fonts that ATS might not parse correctly.
+- ✅ **Action Verbs & Metrics**: Does the experience use strong action verbs and quantified results?
+- ✅ **Consistency**: Check tense, date formatting, bullet formatting, etc.
+- ✅ **Customizability**: How easy is it to tailor this resume to a specific job?
+
+### 3. ATS Optimization Suggestions:
+- List 5–10 specific, actionable tips to improve the resume’s ATS score.
+- Mention tools/techniques (e.g., add a skills section, replace passive verbs, remove tables).
+
+### 4. Optional: ATS-Friendly Rewrite Snippet
+- Rewrite a sample section (like Experience or Summary) in an ATS-optimized format.
+
+### 5. Final ATS Readiness Score (out of 100)
+
+Analyze this resume:
+"""
+<INSERT_RESUME_TEXT_HERE>
+"""
+
+Output in markdown format with clear section headers and bullet points.`
             }
         })
         res.status(200).json({ message: response.text })
@@ -35,43 +66,3 @@ router.post('/analyze', async (req, res) => {
 })
 
 module.exports = router
-
-// {
-//     "message": {
-//         "candidates": [
-//             {
-//                 "content": {
-//                     "parts": [
-//                              "text": "dfgchvjk"
-//                         }
-//                     ],
-//                     "role": "model"
-//                 },
-//                 "finishReason": "STOP",
-//                 "avgLogprobs": -0.2119762944240196
-//             }
-//         ],
-//             "modelVersion": "gemini-2.0-flash",
-//                 "usageMetadata": {
-//             "promptTokenCount": 1309,
-//                 "candidatesTokenCount": 765,
-//                     "totalTokenCount": 2074,
-//                         "promptTokensDetails": [
-//                             {
-//                                 "modality": "DOCUMENT",
-//                                 "tokenCount": 1290
-//                             },
-//                             {
-//                                 "modality": "TEXT",
-//                                 "tokenCount": 19
-//                             }
-//                         ],
-//                             "candidatesTokensDetails": [
-//                                 {
-//                                     "modality": "TEXT",
-//                                     "tokenCount": 765
-//                                 }
-//                             ]
-//         }
-//     }
-// }
