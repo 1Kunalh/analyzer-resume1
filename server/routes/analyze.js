@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { GoogleGenAI, createUserContent } = require('@google/genai')
+const { GoogleGenAI } = require('@google/genai')
 require('dotenv').config()
 
 router.post('/analyze', async (req, res) => {
@@ -22,13 +22,15 @@ router.post('/analyze', async (req, res) => {
         const response = await ai.models.generateContent({
             model: "gemini-2.0-flash",
             contents: [
-                    inlineDataPart
+                inlineDataPart
             ],
             config: {
                 systemInstruction:
                     `You are an AI Resume Optimization Expert trained on top ATS systems like Greenhouse, Lever, and Workday. Analyze the following resume and suggest detailed improvements to increase its ATS score.
 
 Your analysis should include:
+
+### 0. ATS score (out of 100):
 
 ### 1. Resume Summary:
 - Candidate profile: experience level, domain
@@ -51,17 +53,12 @@ Your analysis should include:
 
 ### 5. Final ATS Readiness Score (out of 100)
 
-Analyze this resume:
-"""
-<INSERT_RESUME_TEXT_HERE>
-"""
-
 Output in markdown format with clear section headers and bullet points.`
             }
         })
         res.status(200).json({ message: response.text })
     } catch (e) {
-        res.status(500).json({ message: "Try again later! Error in server", error: e.message })
+        res.status(500)
     }
 })
 
