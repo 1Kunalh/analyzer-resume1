@@ -4,7 +4,7 @@ This is a full-stack application that allows users to upload files (PDF resumes)
 
 ---
 
-## 📦 Tech Stack
+## Tech Stack
 
 - **Frontend:** React
 - **Backend:** Node.js, Express
@@ -14,11 +14,10 @@ This is a full-stack application that allows users to upload files (PDF resumes)
 
 ---
 
-## 🔧 Features
+## Features
 
-- 📄 Upload a resume (PDF) and get improvement suggestions.
-- 🔊 Upload an audio file (MP3) and get a description.
-- 🔒 Handles file validation and error handling.
-- ⚡ Uses Gemini 2.0 Pro/Flash model for fast responses.
+- Upload a resume (PDF) and get improvement suggestions + ATS score.
+- Handles file validation and error handling.
+- Uses Gemini 2.0 flash model for fast responses.
 
 ---
