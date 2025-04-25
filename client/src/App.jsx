@@ -31,7 +31,7 @@ function App() {
     formData.append('resume', file);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/analyze', formData, {
+      const res = await axios.post('https://resume-analyzer-2sa4.onrender.com/api/analyze', formData, {
         headers: {
           'Content-Type': 'application/pdf'
         }
