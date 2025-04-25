@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './app.css';
 
 function App() {
   const [file, setFile] = useState(null);
