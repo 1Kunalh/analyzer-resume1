@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 function App() {
   const [file, setFile] = useState(null);
@@ -47,27 +48,40 @@ function App() {
   }
 
   return (
-    <div className="cointainer-fixed d-flex flex-column align-items-center justify-content-center m-4">
-      <h1 className='text-primary fw-bold mb-5'>Resume Analyzer</h1>
-      <div className='row card p-3 d-flex flex-column align-items-center justify-content-center'>
-        <label className='fw-bold mb-2 fs-5'>Upload Your Resume</label>
-        <input type="file" accept='.pdf' className='form-control' onChange={handleChange} />
-        <button className='btn btn-primary mt-4 fw-bold' onClick={handleSubmit}>{loading ? "Analyzing...." : "Analyze Resume"}</button>
+    <div className="container py-5">
+      <h1 className='text-primary fw-bold text-center mb-5'>Resume Analyzer</h1>
+
+      <div className='card shadow-lg p-4 mx-auto' style={{ maxWidth: '500px' }}>
+        <label className='form-label fw-semibold fs-5 mb-2'>Upload Your Resume (PDF)</label>
+        <input
+          type="file"
+          accept=".pdf"
+          className="form-control mb-3"
+          onChange={handleChange}
+        />
+        <button
+          className="btn btn-primary w-100 fw-bold"
+          onClick={handleSubmit}
+          disabled={loading}
+        >
+          {loading ? "Analyzing..." : "Analyze Resume"}
+        </button>
       </div>
 
-      {
-        error && <div className='alert alert-danger mt-4'>
+      {error && (
+        <div className='alert alert-danger mt-4 text-center'>
           <strong>Error:</strong> {error}
         </div>
-      }
+      )}
 
-      {
-        result && <div className='card p-3 mt-4'>
+      {result && (
+        <div className='card shadow-sm p-4 mt-4 mx-auto' style={{ maxWidth: '700px' }}>
           <ReactMarkdown>{result}</ReactMarkdown>
         </div>
-      }
+      )}
     </div>
-  )
+  );
+
 }
 
 export default App
