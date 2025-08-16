@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Gemini AI Resume Analyzer
 
 This is a full-stack application that allows users to upload files (PDF resumes), and uses **Google Gemini AI** to analyze the content and return insights or summaries.
@@ -32,3 +33,7 @@ The website is live and accessible here:
 This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.  
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+=======
+# analyzer-resume1
+resume analyzer 
+>>>>>>> 6a1f157ab474eb6148819a779fb59acd24d364d4
